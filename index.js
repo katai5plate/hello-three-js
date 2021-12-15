@@ -19,11 +19,23 @@ const cube = new THREE.Mesh(
   new THREE.BoxGeometry(), // 形状
   new THREE.MeshBasicMaterial({ color: 0x00ff00 }) // 材質
 );
+
+// 線を定義
+const line = new THREE.Line(
+  // 座標から形状を生成
+  new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(-10, 0, 0),
+    new THREE.Vector3(0, 10, 0),
+    new THREE.Vector3(10, 0, 0),
+  ]),
+  new THREE.LineBasicMaterial({ color: 0x0000ff }) // 材質
+);
+
 // シーンに追加
-scene.add(cube);
+scene.add(cube, line);
 
 // 原点にあるキューブが見えるようにカメラを引く
-camera.position.z = 5;
+camera.position.z = 15;
 
 // メインループ
 function animate() {
